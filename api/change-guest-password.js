@@ -2,12 +2,7 @@ import { Storage } from "@google-cloud/storage";
 import bcrypt from "bcryptjs";
 import { requireAdmin } from "./_auth.js";
 
-const key = JSON.parse(process.env.GCLOUD_KEYFILE);
-
-const storage = new Storage({
-	projectId: key.project_id,
-	credentials: key,
-});
+const storage = require("./services/googleStorage");
 
 const CONFIG_BUCKET_NAME = process.env.GCLOUD_CONFIG_BUCKET;
 const AUTH_FILE = process.env.GCLOUD_AUTH_FILE;

@@ -5,12 +5,7 @@ import { requireAdmin } from "./_auth.js";
 export const config = { api: { bodyParser: false } };
 
 const BUCKET_NAME = process.env.GCLOUD_DATA_BUCKET;
-const key = JSON.parse(process.env.GCLOUD_KEYFILE);
-
-const storage = new Storage({
-	projectId: key.project_id,
-	credentials: key,
-});
+const storage = require("./services/googleStorage");
 
 export default async function handler(req, res) {
 	// ---- CORS headers ----
