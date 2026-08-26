@@ -30,7 +30,13 @@ const authClient = ExternalAccountClient.fromJSON({
 		`https://iamcredentials.googleapis.com/v1/projects/-/serviceAccounts/` +
 		`${serviceAccountEmail}:generateAccessToken`,
 	subject_token_supplier: {
-		getSubjectToken: getVercelOidcToken,
+		getSubjectToken: () =>
+			getVercelOidcToken({
+				audience:
+					`//iam.googleapis.com/projects/${projectNumber}` +
+					`/locations/global/workloadIdentityPools/${poolId}` +
+					`/providers/${providerId}`,
+			}),
 	},
 });
 
