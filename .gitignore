@@ -1,0 +1,7 @@
+node_modules
+cache
+.env
+.vercel
+package-lock.json
+generate-password-hash.cjs
+auth.json
