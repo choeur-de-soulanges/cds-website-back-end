@@ -4,15 +4,14 @@ import storage from "../services/googleStorage.js";
 
 import { getVercelOidcToken } from "@vercel/oidc";
 
-const token = await getVercelOidcToken();
-
-console.log("Vercel OIDC claims:", JSON.parse(Buffer.from(token.split(".")[1], "base64url").toString("utf8")));
-
 const CONFIG_BUCKET_NAME = process.env.GCLOUD_CONFIG_BUCKET;
 const AUTH_FILE = process.env.GCLOUD_AUTH_FILE;
 const JWT_SECRET = process.env.JWT_SECRET;
 
 export default async function handler(req, res) {
+	const token = await getVercelOidcToken();
+
+	console.log("Vercel OIDC claims:", JSON.parse(Buffer.from(token.split(".")[1], "base64url").toString("utf8")));
 	// CORS headers
 	res.setHeader("Access-Control-Allow-Origin", "*");
 	res.setHeader("Access-Control-Allow-Methods", "POST,OPTIONS");
