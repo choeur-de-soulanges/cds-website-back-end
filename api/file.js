@@ -1,9 +1,7 @@
-import { Storage } from "@google-cloud/storage";
 import { requireAuth } from "./_auth.js";
+import storage from "../services/googleStorage.js";
 
 const BUCKET_NAME = process.env.GCLOUD_DATA_BUCKET;
-
-const storage = require("./services/googleStorage");
 
 export default async function handler(req, res) {
 	res.setHeader("Access-Control-Allow-Origin", "*");

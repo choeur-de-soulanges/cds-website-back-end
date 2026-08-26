@@ -1,11 +1,10 @@
-import { Storage } from "@google-cloud/storage";
 import formidable from "formidable";
 import { requireAdmin } from "./_auth.js";
+import storage from "../services/googleStorage.js";
 
 export const config = { api: { bodyParser: false } };
 
 const BUCKET_NAME = process.env.GCLOUD_DATA_BUCKET;
-const storage = require("./services/googleStorage");
 
 export default async function handler(req, res) {
 	// ---- CORS headers ----

@@ -1,7 +1,5 @@
-import { Storage } from "@google-cloud/storage";
 import { requireAuth } from "./_auth.js";
-
-const storage = require("./services/googleStorage");
+import storage from "../services/googleStorage.js";
 
 const BUCKET_NAME = process.env.GCLOUD_DATA_BUCKET;
 

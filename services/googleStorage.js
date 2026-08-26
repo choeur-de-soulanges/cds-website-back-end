@@ -1,6 +1,6 @@
-const { getVercelOidcToken } = require("@vercel/oidc");
-const { ExternalAccountClient } = require("google-auth-library");
-const { Storage } = require("@google-cloud/storage");
+import { getVercelOidcToken } from "@vercel/oidc";
+import { ExternalAccountClient } from "google-auth-library";
+import { Storage } from "@google-cloud/storage";
 
 const projectId = process.env.GCLOUD_PROJECT_ID;
 const projectNumber = process.env.GCLOUD_PROJECT_NUMBER;
@@ -8,7 +8,13 @@ const serviceAccountEmail = process.env.GCLOUD_SERVICE_ACCOUNT_EMAIL;
 const poolId = process.env.GCLOUD_WORKLOAD_IDENTITY_POOL_ID;
 const providerId = process.env.GCLOUD_WORKLOAD_IDENTITY_POOL_PROVIDER_ID;
 
-if (!projectId || !projectNumber || !serviceAccountEmail || !poolId || !providerId) {
+if (
+	projectId === undefined ||
+	projectNumber === undefined ||
+	serviceAccountEmail === undefined ||
+	poolId === undefined ||
+	providerId === undefined
+) {
 	throw new Error("Missing Google Cloud WIF configuration");
 }
 
@@ -33,4 +39,4 @@ const storage = new Storage({
 	authClient,
 });
 
-module.exports = storage;
+export default storage;

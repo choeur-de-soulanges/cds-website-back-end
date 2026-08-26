@@ -1,8 +1,6 @@
-import { Storage } from "@google-cloud/storage";
 import bcrypt from "bcryptjs";
 import { requireAdmin } from "./_auth.js";
-
-const storage = require("./services/googleStorage");
+import storage from "../services/googleStorage.js";
 
 const CONFIG_BUCKET_NAME = process.env.GCLOUD_CONFIG_BUCKET;
 const AUTH_FILE = process.env.GCLOUD_AUTH_FILE;
