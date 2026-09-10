@@ -5,9 +5,6 @@ import storage from "../services/googleStorage.js";
 const BUCKET_NAME = process.env.GCLOUD_DATA_BUCKET;
 
 export default async function handler(req, res) {
-	return res.status(418).json({
-		message: "uploadFile reached",
-	});
 	console.log("=== uploadFile handler reached ===");
 	console.log("method:", req.method);
 	console.log("authorization present:", !!req.headers.authorization);
