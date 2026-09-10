@@ -8,11 +8,9 @@ const BUCKET_NAME = process.env.GCLOUD_DATA_BUCKET;
 
 export default async function handler(req, res) {
 	// ---- CORS headers ----
-	const allowedOrigin = req.headers.origin || "*";
-	res.setHeader("Access-Control-Allow-Origin", allowedOrigin);
+	res.setHeader("Access-Control-Allow-Origin", "*");
 	res.setHeader("Access-Control-Allow-Methods", "POST,OPTIONS");
-	res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization, X-Requested-With");
-	res.setHeader("Access-Control-Allow-Credentials", "true");
+	res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
 
 	// ---- Preflight request ----
 	if (req.method === "OPTIONS") {
