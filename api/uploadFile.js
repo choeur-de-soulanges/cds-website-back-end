@@ -2,11 +2,12 @@ import formidable from "formidable";
 import { requireAdmin } from "./_auth.js";
 import storage from "../services/googleStorage.js";
 
-export const config = { api: { bodyParser: false } };
-
 const BUCKET_NAME = process.env.GCLOUD_DATA_BUCKET;
 
 export default async function handler(req, res) {
+	console.log("=== uploadFile handler reached ===");
+	console.log("method:", req.method);
+	console.log("authorization present:", !!req.headers.authorization);
 	// ---- CORS headers ----
 	res.setHeader("Access-Control-Allow-Origin", "*");
 	res.setHeader("Access-Control-Allow-Methods", "POST,OPTIONS");

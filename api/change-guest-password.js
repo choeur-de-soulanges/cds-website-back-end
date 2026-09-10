@@ -22,9 +22,7 @@ export default async function handler(req, res) {
 	// Verify that the caller is authenticated as an admin
 	const user = requireAdmin(req, res);
 
-	if (!user) {
-		return;
-	}
+	if (!user) return;
 
 	const { newPassword } = req.body || {};
 
