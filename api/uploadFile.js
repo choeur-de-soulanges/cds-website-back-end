@@ -50,6 +50,8 @@ export default async function handler(req, res) {
 
 		const bucket = storage.bucket(BUCKET_NAME);
 
+		console.log("Uploading file:", file.originalFilename, "to", destination);
+
 		try {
 			await Promise.all(
 				uploadedFiles.map((file) => {
