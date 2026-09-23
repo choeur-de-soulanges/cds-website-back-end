@@ -1,6 +1,7 @@
 import formidable from "formidable";
 import { requireAdmin } from "./_auth.js";
 import storage from "../services/googleStorage.js";
+import path from "path";
 
 const BUCKET_NAME = process.env.GCLOUD_DATA_BUCKET;
 
