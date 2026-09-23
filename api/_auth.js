@@ -43,7 +43,7 @@ export function requireAuth(req, res) {
 		console.error("Invalid token:", err);
 
 		res.status(401).json({
-			error: "Invalid or expired token blablabla",
+			error: "Invalid or expired token",
 		});
 
 		return null;
@@ -51,16 +51,11 @@ export function requireAuth(req, res) {
 }
 
 export function requireAdmin(req, res) {
-	console.log("requireAdmin called");
-
 	const user = requireAuth(req, res);
 
 	if (!user) {
-		console.log("requireAuth failed");
 		return null;
 	}
-
-	console.log("Authenticated user:", user);
 
 	if (user.role !== "admin") {
 		res.status(403).json({
