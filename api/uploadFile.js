@@ -53,7 +53,8 @@ export default async function handler(req, res) {
 		try {
 			await Promise.all(
 				uploadedFiles.map((file) => {
-					const destination = `${file.originalFilename}`;
+					const filename = path.basename(file.originalFilename);
+					const destination = `${folder}/${filename}`;
 					return bucket.upload(file.filepath, {
 						destination,
 						resumable: false,
